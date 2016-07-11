@@ -15,7 +15,7 @@ class Game < ApplicationRecord
   end
 
   def numbers_array
-    numbers.split(',')
+    numbers.split(',').map(&:to_i)
   end
 
   def number_at(index)
