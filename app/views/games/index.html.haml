@@ -1,0 +1,20 @@
+%h1 Listing games
+
+%table
+  %thead
+    %tr
+      %th ID
+      %th
+      %th
+      %th
+
+  %tbody
+    - @games.each do |game|
+      %tr
+        %td= game.id
+        %td= link_to 'Show', game
+        %td= link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Start Game', start_games_path
