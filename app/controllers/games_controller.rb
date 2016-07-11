@@ -7,6 +7,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @index = index_for_numbers
     @number = @game.number_at(index_for_numbers)
     @character = @game.character_of(@number)
     @history = @game.history(0..index_for_numbers)

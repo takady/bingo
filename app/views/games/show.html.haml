@@ -1,6 +1,12 @@
 %p#notice= notice
 
-%h2= "#{@character} #{@number}"
+- unless @index == Game::MAX_INDEX
+  %h2= "#{@character} #{@number}"
+- else
+  %h2 Finish!
+
 %h3= "#{@history}(#{@history.size})"
 %h4= "#{@remaining_numbers}(#{@remaining_numbers.size})"
-= link_to 'Back', games_path
+
+= link_to 'Next', game_path(@game, index: @index + 1)
+= link_to 'Finish', games_path
