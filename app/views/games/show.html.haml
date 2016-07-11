@@ -1,15 +1,27 @@
-%p#notice= notice
+.game
+  %p#notice= notice
 
-- unless @index == Game::MAX_INDEX
-  %h2.number= "#{@character} #{@number}"
-- else
-  %h2.finish おわり！
+  .row.main
+    .col-md-1.back
+      = link_to 'Back', game_path(@game, index: @index - 1), class: 'back-button'
 
-%h3= "#{@history}(#{@history.size})"
-%h4= "#{@remaining_numbers}(#{@remaining_numbers.size})"
+    - unless @index == Game::MAX_INDEX
+      .col-md-10
+        %h2.number.text-center= "#{@character} #{@number}"
+      .col-md-1.next
+        = link_to 'Next', game_path(@game, index: @index + 1), class: 'next-button'
+    - else
+      .col-md-10
+        %h2.finish.text-center おわり！
 
-- unless @index == Game::MAX_INDEX
-  = link_to 'Next', game_path(@game, index: @index + 1), class: 'next-button'
+  .row.history
+    .col-md-8.col-md-offset-2
+      %h3= "#{@history}(#{@history.size})"
 
-= link_to 'Back', game_path(@game, index: @index - 1), class: 'back-button'
-= link_to 'Finish', games_path
+  .row
+    .col-md-8.col-md-offset-2
+      %h4= "#{@remaining_numbers}(#{@remaining_numbers.size})"
+
+  .row
+    .col-md-8.col-md-offset-2
+      = link_to 'Finish', games_path

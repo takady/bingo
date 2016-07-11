@@ -2,12 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.number, .finish {
-  text-align: center;
-  font-size: 250px;
-  font-weight: bold;
-}
+.game {
+  .number, .finish {
+    font-size: 250px;
+    font-weight: bold;
+  }
 
-.next-button {
-  font-size: 30px;
+
+  .back, .next {
+    font-size: 30px;
+    vertical-align: middle;
+  }
 }
