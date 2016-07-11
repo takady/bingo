@@ -1,16 +1,22 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :destroy]
+  before_action :index_for_numbers, only: :show
 
   def index
     @games = Game.all
   end
 
   def show
+    @number = @game.number_at(index_for_numbers)
+    @character = @game.character_of(@number)
+    @history = @game.history(0..index_for_numbers)
+    @remaining_numbers = @game.remaining_numbers(index_for_numbers + 1)
   end
 
   def start
     @game = Game.start
-    @numbers = @game.numbers.split(',')
+
+    redirect_to @game
   end
 
   def destroy
@@ -25,5 +31,9 @@ class GamesController < ApplicationController
 
   def set_game
     @game = Game.find(params[:id])
+  end
+
+  def index_for_numbers
+    params[:index].to_i.in?(0..Game::MAX_INDEX) ? params[:index].to_i : 0
   end
 end

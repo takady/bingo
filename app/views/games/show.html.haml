@@ -1,7 +1,6 @@
 %p#notice= notice
 
-%p
-  %b Numbers:
-  = @game.numbers
-
+%h2= "#{@character} #{@number}"
+%h3= "#{@history}(#{@history.size})"
+%h4= "#{@remaining_numbers}(#{@remaining_numbers.size})"
 = link_to 'Back', games_path
