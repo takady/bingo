@@ -29,8 +29,4 @@ class Game < ApplicationRecord
   def history(range)
     numbers_array[range]
   end
-
-  def remaining_numbers(index)
-    numbers_array[index..MAX_INDEX]
-  end
 end

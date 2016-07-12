@@ -4,25 +4,21 @@
   .row.main
     - if @index == Game::MAX_INDEX
       .col-sm-10.col-sm-offset-1
-        %h2.finish.text-center おわり！
+        %h2.finish.text-center おわり
     - else
       .col-sm-10.col-sm-offset-1
         %h2.number.text-center= "#{@character} #{@number}"
 
   .row.move
     .col-sm-1.col-sm-offset-2.back
-      = link_to '<', game_path(@game, index: @index - 1), class: 'back-button'
+      = link_to (fa_icon :'chevron-left'), game_path(@game, index: @index - 1)
     - unless @index == Game::MAX_INDEX
       .col-sm-1.col-sm-offset-6.next
-        = link_to '>', game_path(@game, index: @index + 1), class: 'next-button'
+        = link_to (fa_icon :'chevron-right'), game_path(@game, index: @index + 1)
 
   .row.history
     .col-sm-8.col-sm-offset-2
       %h3= "#{@history}(#{@history.size})"
-
-  .row
-    .col-sm-8.col-sm-offset-2
-      %h4= "#{@remaining_numbers}(#{@remaining_numbers.size})"
 
   .row
     .col-sm-8.col-sm-offset-2

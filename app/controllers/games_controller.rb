@@ -11,7 +11,6 @@ class GamesController < ApplicationController
     @number = @game.number_at(index_for_numbers)
     @character = @game.character_of(@number)
     @history = @game.history(0..index_for_numbers)
-    @remaining_numbers = @game.remaining_numbers(index_for_numbers + 1)
   end
 
   def start
