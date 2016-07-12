@@ -8,14 +8,10 @@
       %thead
         %tr
           %th ID
-          %th
-          %th
       %tbody
         - @games.each do |game|
           %tr
-            %td= game.id
-            %td= link_to 'Show', game
-            %td= link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %td= link_to game.id, game
 
 .row
   .col-sm-8.col-sm-offset-1
