@@ -2,26 +2,28 @@
   %p#notice= notice
 
   .row.main
-    .col-md-1.back
-      = link_to 'Back', game_path(@game, index: @index - 1), class: 'back-button'
-
-    - unless @index == Game::MAX_INDEX
-      .col-md-10
-        %h2.number.text-center= "#{@character} #{@number}"
-      .col-md-1.next
-        = link_to 'Next', game_path(@game, index: @index + 1), class: 'next-button'
-    - else
-      .col-md-10
+    - if @index == Game::MAX_INDEX
+      .col-sm-10.col-sm-offset-1
         %h2.finish.text-center おわり！
+    - else
+      .col-sm-10.col-sm-offset-1
+        %h2.number.text-center= "#{@character} #{@number}"
+
+  .row.move
+    .col-sm-1.col-sm-offset-2.back
+      = link_to '<', game_path(@game, index: @index - 1), class: 'back-button'
+    - unless @index == Game::MAX_INDEX
+      .col-sm-1.col-sm-offset-6.next
+        = link_to '>', game_path(@game, index: @index + 1), class: 'next-button'
 
   .row.history
-    .col-md-8.col-md-offset-2
+    .col-sm-8.col-sm-offset-2
       %h3= "#{@history}(#{@history.size})"
 
   .row
-    .col-md-8.col-md-offset-2
+    .col-sm-8.col-sm-offset-2
       %h4= "#{@remaining_numbers}(#{@remaining_numbers.size})"
 
   .row
-    .col-md-8.col-md-offset-2
+    .col-sm-8.col-sm-offset-2
       = link_to 'Finish', games_path
