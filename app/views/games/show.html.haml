@@ -16,10 +16,11 @@
       .col-sm-1.col-sm-offset-6.next
         = link_to (fa_icon :'chevron-right'), game_path(@game, index: @index + 1)
 
-  .row.history
-    .col-sm-8.col-sm-offset-2
-      %h3= "#{@history}(#{@history.size})"
-
   .row
-    .col-sm-8.col-sm-offset-2
-      = link_to 'Finish', games_path
+    .col-sm-8.col-sm-offset-2.home
+      = link_to (fa_icon :home), games_path
+
+  - if @index > 0
+    .row.history
+      .col-sm-8.col-sm-offset-2
+        %h3= "#{@history}(#{@history.size})"

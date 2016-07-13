@@ -4,11 +4,31 @@
 
 .game {
   .number, .finish {
-    font-size: 250px;
+    font-size: 350px;
     font-weight: bold;
+    margin-bottom: 50px;
   }
 
   .back, .next {
     font-size: 50px;
   }
+
+  .move {
+    margin-bottom: 30px;
+  }
+
+  .history {
+    color: #fff;
+  }
+}
+
+.start {
+  font-size: 170px;
+  font-weight: bold;
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.home {
+  font-size: 30px;
 }
