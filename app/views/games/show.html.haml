@@ -1,16 +1,16 @@
 .row.game
-  - if @index == Game::MAX_INDEX
-    .col-sm-10.col-sm-offset-1
-      %h2.finish.text-center おわり
-  - else
-    .col-sm-10.col-sm-offset-1
-      %h2.number.text-center= "#{@character} #{@number}"
+  .col-sm-10.col-sm-offset-1
+    - if @index == Game::MAX_INDEX
+      %h2.main.finish.text-center おわり
+    - else
+      %h2.main.number.text-center= "#{@character} #{@number}"
 
 .row.move
   .col-sm-1.col-sm-offset-2.back
-    = link_to (fa_icon :'chevron-left'), game_path(@game, index: @index - 1)
-  - unless @index == Game::MAX_INDEX
-    .col-sm-1.col-sm-offset-6.next
+    - if @index > 0
+      = link_to (fa_icon :'chevron-left'), game_path(@game, index: @index - 1)
+  .col-sm-1.col-sm-offset-6.next
+    - unless @index == Game::MAX_INDEX
       = link_to (fa_icon :'chevron-right'), game_path(@game, index: @index + 1)
 
 .row

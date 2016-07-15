@@ -3,9 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .game {
-  .number, .finish {
+  .main {
     font-size: 370px;
     margin-bottom: 50px;
+
+    &.finish {
+      font-weight: bold;
+    }
   }
 }
 
