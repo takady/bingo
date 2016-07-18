@@ -1,0 +1,15 @@
+require 'readline'
+
+print('> Press enter to start!', "\n")
+
+game = Game.start
+
+game.numbers_array.each_with_index {|number, index|
+  break unless Readline.readline('', true)
+
+  print("#{index}> ", "#{Game.character_of(number)} #{number}")
+  system %|osascript -e "say #{number.to_s}"|
+}
+
+print("\n")
+print('Bye', "\n")

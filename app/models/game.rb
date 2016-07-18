@@ -17,17 +17,15 @@ class Game < ApplicationRecord
     def shuffle_numbers
       NUMBERS.values.flat_map(&:to_a).shuffle
     end
+
+    def character_of(number)
+      NUMBERS.select {|character, numbers| numbers.include?(number) }.keys.first
+    end
   end
 
   def number_at(index)
     numbers_array.at(index)
   end
-
-  def character_of(number)
-    NUMBERS.select {|character, numbers| numbers.include?(number) }.keys.first
-  end
-
-  private
 
   def numbers_array
     numbers.split(',').map(&:to_i)
