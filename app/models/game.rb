@@ -6,27 +6,30 @@ class Game < ApplicationRecord
     G: (46..60),
     O: (61..75)
   }.freeze
+
   MAX_INDEX = 74.freeze
 
   class << self
     def start
-      create(numbers: NUMBERS.values.flat_map(&:to_a).shuffle.join(','))
+      create(numbers: shuffle_numbers.join(','))
+    end
+
+    def shuffle_numbers
+      NUMBERS.values.flat_map(&:to_a).shuffle
     end
   end
 
-  def numbers_array
-    numbers.split(',').map(&:to_i)
-  end
-
   def number_at(index)
-    numbers_array.at(index).to_i
+    numbers_array.at(index)
   end
 
   def character_of(number)
     NUMBERS.select {|character, numbers| numbers.include?(number) }.keys.first
   end
 
-  def history(range)
-    numbers_array[range]
+  private
+
+  def numbers_array
+    numbers.split(',').map(&:to_i)
   end
 end

@@ -16,8 +16,3 @@
 .row
   .col-sm-8.col-sm-offset-2.home
     = link_to (fa_icon :home), games_path
-
-- if @index > 0
-  .row.history
-    .col-sm-8.col-sm-offset-2
-      %h3= "#{@history}(#{@history.size})"
