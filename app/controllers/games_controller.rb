@@ -8,8 +8,7 @@ class GamesController < ApplicationController
 
   def show
     @index = index_for_numbers
-    @number = @game.number_at(index_for_numbers)
-    @character = Game.character_of(@number)
+    @number = @game.number_at(@index)
   end
 
   def start

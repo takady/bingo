@@ -3,7 +3,7 @@
     - if @index == Game::MAX_INDEX
       %h2.main.finish.text-center おわり
     - else
-      %h2.main.number.text-center= "#{@character} #{@number}"
+      %h2.main.number.text-center= "#{Game.character_of(@number)} #{@number}"
 
 .row.move
   .col-sm-1.col-sm-offset-2.back
