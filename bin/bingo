@@ -2,7 +2,9 @@ require 'readline'
 
 print('> Press enter to start!', "\n")
 
-game = Game.start
+unless ARGV[0] && game = Game.find(ARGV[0].to_i)
+  game = Game.start
+end
 
 game.numbers_array.each_with_index {|number, index|
   break unless Readline.readline('', true)
